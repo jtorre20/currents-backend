@@ -1,0 +1,2 @@
+class SectionStory < ApplicationRecord
+end
