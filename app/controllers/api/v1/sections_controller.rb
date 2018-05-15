@@ -2,6 +2,7 @@ class Api::V1::SectionsController < ApplicationController
   before_action :find_section, only: [:update]
   def index
     @sections = Section.all
+    # render json: SectionsSerializer.new(@sections)
     render json: @sections
   end
 

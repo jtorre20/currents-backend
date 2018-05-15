@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+sections = Section.create([{title: 'Sports'}, {title: 'Headlines'}, {title: 'Science' }])
+
+stories = Story.create([{title: 'Lottery up to 100000000000'}, { title: 'Coding is hard'}])
+
+# comments
+
+Section.first.stories << Story.all
