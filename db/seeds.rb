@@ -6,10 +6,23 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-sections = Section.create([{title: 'Sports'}, {title: 'Headlines'}, {title: 'Science' }])
+#news_API_key = 8c9cb125d4414d3981669820dd0873d6
 
-stories = Story.create([{title: 'Lottery up to 100000000000'}, { title: 'Coding is hard'}])
+# sections = Section.create([{title: "Top Stories"}, {title: "World"}, {title: "Science" }, {title: "U.S."}, {title: "Business"}, {title: "Technology"}])
 
-# comments
+# top_stories = Story.create([{title: 'Fist-Pumping Jared Kushner Leaves Jerusalem Embassy Refreshed And Ready To Solve Next Global Crisis'}, { title: 'Trump Preemptively Tells Melania He Wont Give Her A Kidney'}])
 
-Section.first.stories << Story.all
+# # comments
+
+# Section.first.stories << top_stories
+# require 'pry'
+
+news_api = RestClient.get("https://newsapi.org/v2/top-headlines?country=us&apiKey=8c9cb125d4414d3981669820dd0873d6")
+# byebug
+news_data = JSON.parse(news_api)
+
+
+news_data["articles"].each do |article| 
+  Story.create(title: article["title"], description: article["description"], url: article["url"], url_to_image: article["urlToImage"])
+end
+

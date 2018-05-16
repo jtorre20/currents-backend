@@ -2,7 +2,8 @@
   Rails.application.routes.draw do
     namespace :api do
       namespace :v1 do
-        resources :sections, only: [:index, :update]
+        resources :sections, only: [:index]
+        resources :stories, only: [:index]
       end
     end
   end
