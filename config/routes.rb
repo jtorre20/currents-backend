@@ -4,6 +4,8 @@
       namespace :v1 do
         resources :sections, only: [:index]
         resources :stories, only: [:index]
+        resources :comments, only: [:index]
+
       end
     end
   end

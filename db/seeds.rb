@@ -27,10 +27,11 @@ top_stories = Section.all.find(id = 1)
 #***************STORIES***************************
 
 headline_articles = headlines_data["articles"].each do |article| 
-  story = Story.create(title: article["title"], description: article["description"], url: article["url"], url_to_image: article["urlToImage"])
-  #****************ASSOCIATION*********************
+  story = Story.create(title: article["title"], description: article["description"], url: article["url"], url_to_image: article["urlToImage"], comments: [Comment.new(content: Faker::Lorem.sentence)])
+  #****************ASSOCIATION********************
   top_stories.stories << story
 end
+
 
 
 
